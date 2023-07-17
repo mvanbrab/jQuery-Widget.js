@@ -1,3 +1,16 @@
+# First of all
+This is branch hardcoded-https-webclient of a fork of https://github.com/comunica/jQuery-Widget.js.
+
+The purpose is to provide a Docker image to run at https://webclient. It is needed until [this issue](https://github.com/comunica/jQuery-Widget.js/issues/152) is solved.
+
+To create the Docker image and push it to Docker hub:
+```bash
+docker build -t mvanbrab/jquery-widget.js:v0.0.1 .
+docker login
+docker push jquery-widget.js mvanbrab/jquery-widget.js:v0.0.1
+```
+
+
 # Comunica SPARQL jQuery Widget
 [<img src="https://comunica.dev/img/comunica_red.svg" width="200" align="right" alt="" />](https://comunica.dev/)
 
