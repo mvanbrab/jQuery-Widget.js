@@ -27,7 +27,7 @@ To commit and tag everything nicely in the repository:
 git add .
 git commit --no-verify -m "hardcoced baseURL to <base-url>"
 git push
-git tag -a v0.0.1.<base-url-slug> -m "baseURL=<base-url>"
+git tag -a v0.0.2.<base-url-slug> -m "baseURL=<base-url>"
 git push --tags
 ```
 
