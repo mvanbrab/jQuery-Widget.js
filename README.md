@@ -1,15 +1,39 @@
 # First of all
-This is branch hardcoded-https-webclient of a fork of https://github.com/comunica/jQuery-Widget.js.
+This is branch **hardcoded-baseurl** of a fork of https://github.com/comunica/jQuery-Widget.js.
 
-The purpose is to provide a Docker image to run at https://webclient. It is needed until [this issue](https://github.com/comunica/jQuery-Widget.js/issues/152) is solved.
+The purpose is to provide a Docker image to run at a baseURL different from the default baseURL (`https://query.linkeddatafragments.org/`).
+It is needed until [this issue](https://github.com/comunica/jQuery-Widget.js/issues/152) is solved.
 
-To create the Docker image and push it to Docker hub:
-```bash
-docker build -t mvanbrab/jquery-widget.js:v0.0.1 .
-docker login
-docker push jquery-widget.js mvanbrab/jquery-widget.js:v0.0.1
+## Procedure to make a new Docker image
+
+Below we use some 'pseudo variables'. Replace these with actual values, e.g.:
+- `<base-url>`: `https://webclient/`
+- `<base-url-slug>`: `https-webclient`
+
+To change the hardcoded baseURL, modify the value of the `-b` parameter in this line in [package.json](package.json).
+```
+    "build": "node ./bin/generate.js -b <base-url>",
 ```
 
+To create the Docker image with a self-explaining label and push it to Docker hub:
+```bash
+docker build -t mvanbrab/jquery-widget.js:v0.0.2.<base-url-slug> .
+docker login
+docker push mvanbrab/jquery-widget.js:v0.0.2.<base-url-slug>
+```
+
+To commit and tag everything nicely in the repository:
+```bash
+git add .
+git commit --no-verify -m "hardcoced baseURL to <base-url>"
+git push
+git tag -a v0.0.1.<base-url-slug> -m "baseURL=<base-url>"
+git push --tags
+```
+
+### Usage
+
+Refer to the appropriate Docker image `mvanbrab/jquery-widget.js:v0.0.2.<base-url-slug>`.
 
 # Comunica SPARQL jQuery Widget
 [<img src="https://comunica.dev/img/comunica_red.svg" width="200" align="right" alt="" />](https://comunica.dev/)
