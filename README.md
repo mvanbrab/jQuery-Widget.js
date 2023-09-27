@@ -33,8 +33,8 @@ git add .
 #git commit --no-verify -m "hardcoded baseURL to https://webclient.onto-deside.ilabt.imec.be/"
 git push
 # choose one, extend as new ones are added:
-#git tag -a v0.0.2.<base-url-slug> -m "baseURL=https://webclient/"
-#git tag -a v0.0.2.<base-url-slug> -m "baseURL=https://webclient.onto-deside.ilabt.imec.be/"
+#git tag -a v0.0.2.https-webclient -m "baseURL=https://webclient/"
+#git tag -a v0.0.2.https-webclient-onto-deside-ilabt-imec-be -m "baseURL=https://webclient.onto-deside.ilabt.imec.be/"
 git push --tags
 ```
 
