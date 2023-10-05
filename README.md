@@ -10,19 +10,26 @@ To change the hardcoded baseURL, modify the value of the `-b` parameter in this 
 ```
     "build": "node ./bin/generate.js -b <base-url>",
 ```
+
 Actual values for `<base-url>`, extend as new ones are added:
-- `https://webclient/`
-- `https://webclient.onto-deside.ilabt.imec.be/`
+
+| `<base-url>`                                   | slug used in labels and tags                |
+|------------------------------------------------|---------------------------------------------|
+| `https://webclient/`                           | `https-webclient`                           |
+| `https://webclient.onto-deside.ilabt.imec.be/` | `https-webclient-onto-deside-ilabt-imec-be` |
+| `http://localhost:8080/`                       | `http-localhost-8080`                       |
 
 To create the Docker image with a self-explaining label and push it to Docker hub:
 ```bash
 # choose one, extend as new ones are added:
 #docker build -t mvanbrab/jquery-widget.js:v0.0.2.https-webclient .
 #docker build -t mvanbrab/jquery-widget.js:v0.0.2.https-webclient-onto-deside-ilabt-imec-be .
+#docker build -t mvanbrab/jquery-widget.js:v0.0.2.http-localhost-8080 .
 docker login
 # choose one, extend as new ones are added:
 #docker push mvanbrab/jquery-widget.js:v0.0.2.https-webclient
 #docker push mvanbrab/jquery-widget.js:v0.0.2.https-webclient-onto-deside-ilabt-imec-be
+#docker push mvanbrab/jquery-widget.js:v0.0.2.http-localhost-8080
 ```
 
 To commit and tag everything nicely in the repository:
@@ -31,10 +38,12 @@ git add .
 # choose one, extend as new ones are added:
 #git commit --no-verify -m "hardcoded baseURL to https://webclient/"
 #git commit --no-verify -m "hardcoded baseURL to https://webclient.onto-deside.ilabt.imec.be/"
+#git commit --no-verify -m "hardcoded baseURL to http://localhost:8080/"
 git push
 # choose one, extend as new ones are added:
 #git tag -a v0.0.2.https-webclient -m "baseURL=https://webclient/"
 #git tag -a v0.0.2.https-webclient-onto-deside-ilabt-imec-be -m "baseURL=https://webclient.onto-deside.ilabt.imec.be/"
+#git tag -a v0.0.2.http-localhost-8080 -m "baseURL=http://localhost:8080/"
 git push --tags
 ```
 
